@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roselle treats 'N' more - Premium Treats & Bakery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', Helvetica, sans-serif;
+            color: aliceblue;
+            background: #000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #38037e 0%, #1a0047 100%);
+            padding: 15px 30px;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffb400;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            color: #ffb400;
+            background: rgba(255, 180, 0, 0.1);
+        }
+
+        .navbar-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .button {
+            background: linear-gradient(135deg, #d2691e, #ff8c00);
+            color: white;
+            font-size: 14px;
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
+        }
+
+        .join-btn {
+            background: linear-gradient(135deg, #ff6b9d, #ff1493);
+            color: white;
+            font-size: 14px;
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease;
+            font-weight: bold;
+        }
+
+        .join-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+        }
+
+        .signin-btn {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            font-size: 14px;
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease;
+            font-weight: bold;
+        }
+
+        .signin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .page {
+            display: none;
+            min-height: calc(100vh - 100px);
+            padding: 40px 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* HOME PAGE */
+        #home {
+            background: linear-gradient(135deg, #000 0%, #1a0047 100%);
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        #home h1 {
+            font-size: 52px;
+            margin: 20px 0;
+            color: #ffb400;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        #home h3 {
+            font-size: 28px;
+            margin: 15px 0;
+            color: #ff6b9d;
+        }
+
+        #home p {
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 15px auto;
+            color: #e0e0e0;
+        }
+
+        .home-cta {
+            margin-top: 30px;
+        }
+
+        /* ABOUT PAGE */
+        #about {
+            background: linear-gradient(135deg, #000 0%, #1a0047 100%);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #about h2 {
+            font-size: 40px;
+            margin: 20px 0;
+            color: #ffb400;
+            text-align: center;
+        }
+
+        #about img {
+            max-width: 300px;
+            border-radius: 15px;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        #about h3, #about h4 {
+            color: #e0e0e0;
+            margin: 15px 0;
+            line-height: 1.8;
+        }
+
+        /* PRODUCTS PAGE */
+        #products {
+            background: linear-gradient(135deg, #1a0047 0%, #000 100%);
+        }
+
+        #products h1 {
+            color: #ffb400;
+            font-size: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .products-filters {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            background: rgba(255, 180, 0, 0.2);
+            color: #ffb400;
+            border: 2px solid #ffb400;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            font-weight: bold;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #ffb400;
+            color: #000;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .hive-card {
+            border-radius: 18px;
+            padding: 18px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            position: relative;
+            color: #fff;
+            transition: all 0.35s ease;
+            border: 2px solid rgba(255, 180, 0, 0.1);
+        }
+
+        .hive-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 180, 0, 0.3);
+            border-color: #ffb400;
+        }
+
+        .hive-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .category-tag {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: linear-gradient(135deg, #ff6b9d, #ff1493);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .price-tag {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: #ffb400;
+            color: #000;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .hive-card h2 {
+            margin: 12px 0 6px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffb400;
+        }
+
+        .hive-card .description {
+            font-size: 13px;
+            color: #b0b0b0;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffb400;
+            margin: 10px 0;
+        }
+
+        .stars {
+            margin: 8px 0;
+        }
+
+        .stars i {
+            color: #ffd700;
+            font-size: 14px;
+            margin-right: 2px;
+        }
+
+        .cart-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        .cart-btn:hover {
+            background: linear-gradient(135deg, #00a8cc, #0077aa);
+            transform: translateY(-2px);
+        }
+
+        /* GAMES PAGE */
+        #games {
+            background: linear-gradient(135deg, #1a0047 0%, #000 100%);
+            text-align: center;
+        }
+
+        #games h1 {
+            color: #ffb400;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        #games > p {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .games-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .game-card {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 2px solid #ffb400;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 180, 0, 0.3);
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .game-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .game-info h3 {
+            color: #ffb400;
+            margin-bottom: 8px;
+        }
+
+        .game-btn {
+            background: linear-gradient(135deg, #ff6b9d, #ff1493);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s ease;
+            width: 100%;
+        }
+
+        .game-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+        }
+
+        /* SIGNIN PAGE */
+        #signin {
+            background: linear-gradient(135deg, #1a0047 0%, #000 100%);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .signin-container {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            border: 2px solid #ffb400;
+        }
+
+        .signin-container h1 {
+            color: #ffb400;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin: 20px 0;
+        }
+
+        .form-group label {
+            display: block;
+            color: #ffb400;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ffb400;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 14px;
+        }
+
+        .form-group input::placeholder {
+            color: #888;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #ff6b9d;
+            box-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
+        }
+
+        .signin-btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .signin-btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        /* CONTACT PAGE */
+        #contact {
+            background: linear-gradient(135deg, #1a0047 0%, #000 100%);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #contact h1 {
+            color: #ffb400;
+            font-size: 40px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 2px solid #ffb400;
+        }
+
+        .contact-info h3 {
+            color: #ffb400;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #e0e0e0;
+        }
+
+        .contact-form {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #ffb400;
+            margin-top: 20px;
+        }
+
+        .contact-form .form-group input,
+        .contact-form .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ffb400;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+
+        .contact-form .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #ff6b9d, #ff1493);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+        }
+
+        /* CART PAGE */
+        #cart {
+            background: linear-gradient(135deg, #1a0047 0%, #000 100%);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cart-container {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #ffb400;
+        }
+
+        #cart h1 {
+            color: #ffb400;
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .cart-table {
+            width: 100%;
+            margin: 20px 0;
+            color: white;
+            border-collapse: collapse;
+        }
+
+        .cart-table th {
+            background: linear-gradient(135deg, #ffb400, #ff6b9d);
+            color: #000;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .cart-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 180, 0, 0.2);
+        }
+
+        .remove-btn {
+            background: #ff4444;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .remove-btn:hover {
+            background: #cc0000;
+        }
+
+        .cart-summary {
+            background: rgba(255, 180, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 2px solid #ffb400;
+        }
+
+        .cart-summary h3 {
+            color: #ffb400;
+            font-size: 20px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        /* EMPLOYEE PAGE */
+        #employees {
+            background: linear-gradient(135deg, #1a0047 0%, #000 100%);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .employee-container {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 40px;
+            border-radius: 15px;
+            border: 3px solid #ffb400;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .employee-container h1 {
+            color: #ff6b9d;
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .employee-benefits {
+            background: rgba(255, 180, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid #ffb400;
+        }
+
+        .employee-benefits h2 {
+            color: #ffb400;
+            margin-bottom: 15px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            color: #e0e0e0;
+        }
+
+        .benefit-item i {
+            color: #ffb400;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+
+        .apply-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #ff6b9d, #ff1493);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .apply-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #38037e, #1a0047);
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 3px solid #ffb400;
+        }
+
+        .footer-content h3 {
+            color: #ffb400;
+            margin-bottom: 10px;
+        }
+
+        .footer-menu {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .footer-menu a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .footer-menu a:hover {
+            color: #ffb400;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: #888;
+            margin-top: 20px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 8px;
+                width: 100%;
+            }
+
+            .navbar-buttons {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .navbar-buttons button {
+                width: 100%;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .games-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-table {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">🍰 Roselle treats 'N' more</div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home'); return false;">Home</a></li>
+                <li><a href="#" onclick="showPage('about'); return false;">About</a></li>
+                <li><a href="#" onclick="showPage('products'); return false;">Products</a></li>
+                <li><a href="#" onclick="showPage('games'); return false;">Games</a></li>
+                <li><a href="#" onclick="showPage('contact'); return false;">Contact</a></li>
+            </ul>
+            <div class="navbar-buttons">
+                <button class="signin-btn" onclick="showPage('signin'); return false;">🛒 Sign In</button>
+                <button class="button" onclick="showPage('cart'); return false;">🛍️ Cart (<span id="cartCount">0</span>)</button>
+                <button class="join-btn" onclick="showPage('employees'); return false;">💼 Join Us</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <h1>Welcome to Roselle treats 'N' more</h1>
+        <h3>Premium Baked Goods & Luxury Treats</h3>
+        <p>Experience the finest artisanal baked goods and premium treats crafted with passion and dedication since 2016. From delicate pastries to exquisite cakes, every creation is made with the finest ingredients.</p>
+        <p>Discover our exclusive collection of gourmet treats, fresh baked goods, and luxury items curated for discerning customers.</p>
+        <div class="home-cta">
+            <button class="button" onclick="showPage('products'); return false;">Explore Products</button>
+            <button class="join-btn" onclick="showPage('games'); return false;" style="margin-left: 10px;">Play Games</button>
+        </div>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page">
+        <h2>About Roselle treats 'N' more</h2>
+        <h3>Our Story</h3>
+        <h4>Roselle Treats 'N' More was founded in 2022 by Rosemary Udoffia Nwajei, building on years of passion and expertise in baking and confectionery. The business represents a dream brought to reality through dedication, skill, and an unwavering commitment to quality.</h4>
+        <h4>Our journey is rooted in perfecting traditional recipes and creating innovative treats that bring joy to our customers. With a foundation built on premium ingredients and meticulous craftsmanship, we deliver excellence in every bite.</h4>
+        <h4>We offer flexible delivery options - whether you prefer home delivery or convenient pick-up, we ensure your treats arrive fresh and perfect. Join us in celebrating the art of fine baking!</h4>
+    </div>
+
+    <!-- PRODUCTS PAGE -->
+    <div id="products" class="page">
+        <h1>Our Premium Products Collection</h1>
+        
+        <div class="products-filters">
+            <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
+            <button class="filter-btn" onclick="filterProducts('pastry')">Pastries</button>
+            <button class="filter-btn" onclick="filterProducts('luxury')">Luxury Items</button>
+            <button class="filter-btn" onclick="filterProducts('beverage')">Beverages</button>
+            <button class="filter-btn" onclick="filterProducts('cake')">Cakes</button>
+        </div>
+
+        <div class="cards-container" id="productsContainer"></div>
+    </div>
+
+    <!-- GAMES PAGE -->
+    <div id="games" class="page">
+        <h1>🎮 Play Our Games</h1>
+        <p>Enjoy our collection of free games while you browse!</p>
+        <div class="games-container" id="gamesContainer"></div>
+    </div>
+
+    <!-- SIGNIN PAGE -->
+    <div id="signin" class="page">
+        <div class="signin-container">
+            <h1>🔐 Sign In to Purchase</h1>
+            <form onsubmit="handleSignIn(event)">
+                <div class="form-group">
+                    <label for="signin_name">Full Name:</label>
+                    <input type="text" id="signin_name" name="name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="signin_email">Email:</label>
+                    <input type="email" id="signin_email" name="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="signin_phone">Phone Number:</label>
+                    <input type="tel" id="signin_phone" name="phone" required placeholder="Enter your phone number" option="09067103388">
+                </div>
+                <div class="form-group">
+                    <label for="signin_address">Address:</label>
+                    <input type="text" id="signin_address" name="address" required placeholder="Enter your delivery address">
+                </div>
+                <button type="submit" class="signin-btn-submit">Sign In & Continue Shopping</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page">
+        <h1>Contact Us</h1>
+        <div class="contact-info">
+            <h3>📞 Get in Touch</h3>
+            <p><strong>Phone:</strong> <a href="tel:08066325925" style="color: #ffb400;">08066325925</a></p>
+            <p><strong>Address:</strong> Lagos, Nigeria</p>
+            <p><strong>Hours:</strong> Monday - Sunday, 8:00 AM - 8:00 PM</p>
+        </div>
+
+        <div class="contact-form">
+            <h3>Send us a Message</h3>
+            <form onsubmit="handleContactSubmit(event)">
+                <div class="form-group">
+                    <label for="contact_name">Full Name:</label>
+                    <input type="text" id="contact_name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact_email">Email:</label>
+                    <input type="email" id="contact_email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact_phone">Phone:</label>
+                    <input type="tel" id="contact_phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact_message">Message:</label>
+                    <textarea id="contact_message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send on WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CART PAGE -->
+    <div id="cart" class="page">
+        <div class="cart-container">
+            <h1>🛒 Shopping Cart</h1>
+            <div id="cartContent"></div>
+        </div>
+    </div>
+
+    <!-- EMPLOYEE PAGE -->
+    <div id="employees" class="page">
+        <div class="employee-container">
+            <h1>💼 Join Our Team</h1>
+            <p style="text-align: center; color: #e0e0e0; margin-bottom: 20px;">Become part of the Roselle treats 'N' more family and earn excellent income!</p>
+            
+            <div class="employee-benefits">
+                <h2>💰 Employment Benefits</h2>
+                <div class="benefit-item">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span><strong>Base Pay:</strong> ₦200,000 per month</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-percentage"></i>
+                    <span><strong>Performance Bonus:</strong> Up to 50% based on monthly performance metrics</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-gift"></i>
+                    <span><strong>Commission:</strong> 15% on sales generated</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <span><strong>Flexible Schedules:</strong> Work according to your availability</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-hospital"></i>
+                    <span><strong>Benefits Package:</strong> Health & wellness coverage</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-medal"></i>
+                    <span><strong>Performance Tier:</strong> Promotions based on achievements</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span><strong>Training:</strong> Complete training program provided</span>
+                </div>
+            </div>
+
+            <div class="employee-benefits">
+                <h2>📊 Performance Tiers</h2>
+                <p><strong>Bronze Tier (0-500k sales):</strong> Base ₦200,000 + 10% bonus</p>
+                <p><strong>Silver Tier (500k-1M sales):</strong> Base ₦200,000 + 25% bonus</p>
+                <p><strong>Gold Tier (1M-2M sales):</strong> Base ₦200,000 + 40% bonus</p>
+                <p><strong>Platinum Tier (2M+ sales):</strong> Base ₦200,000 + 50% bonus + Leadership roles</p>
+            </div>
+
+            <form onsubmit="handleEmployeeApplication(event)">
+                <div class="form-group">
+                    <label for="emp_name">Full Name:</label>
+                    <input type="text" id="emp_name" name="name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="emp_email">Email:</label>
+                    <input type="email" id="emp_email" name="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="emp_phone">Phone Number:</label>
+                    <input type="tel" id="emp_phone" name="phone" required placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="emp_experience">Experience (optional):</label>
+                    <input type="text" id="emp_experience" name="experience" placeholder="Your relevant experience">
+                </div>
+                <button type="submit" class="apply-btn">Apply Now</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <h3>Rosellé treats 'N' more</h3>
+            <p>Premium Baked Goods & Luxury Treats since 2016</p>
+            <ul class="footer-menu">
+                <li><a href="#" onclick="showPage('home'); return false;">Home</a></li>
+                <li><a href="#" onclick="showPage('about'); return false;">About</a></li>
+                <li><a href="#" onclick="showPage('products'); return false;">Products</a></li>
+                <li><a href="#" onclick="showPage('contact'); return false;">Contact</a></li>
+            </ul>
+            <p class="copyright">&copy; 2026 Roselle treats 'N' more. All rights reserved. Thank you for shopping with us!</p>
+        </div>
+    </footer>
+
+    <script>
+        // Product Data
+        const products = [
+            // Pastries
+            { id: 1, name: "Croissants (Pack of 6)", price: 3500, category: "pastry", description: "Fresh butter croissants", image: "https://via.placeholder.com/280x250?text=Croissants" },
+            { id: 2, name: "Danish Pastries", price: 2800, category: "pastry", description: "Assorted danish pastries", image: "https://via.placeholder.com/280x250?text=Danish" },
+            { id: 3, name: "Buns & Puff Puff (1kg Bowl)", price: 2500, category: "pastry", description: "Fresh baked buns", image: "https://via.placeholder.com/280x250?text=Buns" },
+            { id: 4, name: "Doughnuts (Dozen)", price: 3000, category: "pastry", description: "Glazed doughnuts", image: "https://via.placeholder.com/280x250?text=Doughnuts" },
+            
+            // Cakes
+            { id: 5, name: "Wedding Cake (3-Tier)", price: 150000, category: "cake", description: "Luxury wedding cake", image: "https://via.placeholder.com/280x250?text=Wedding+Cake" },
+            { id: 6, name: "Chocolate Cake (8 inches)", price: 35000, category: "cake", description: "Rich chocolate cake", image: "https://via.placeholder.com/280x250?text=Chocolate+Cake" },
+            { id: 7, name: "Vanilla Cake (6 inches)", price: 25000, category: "cake", description: "Classic vanilla cake", image: "https://via.placeholder.com/280x250?text=Vanilla+Cake" },
+            { id: 8, name: "Cheese Cake", price: 28000, category: "cake", description: "Premium cheesecake", image: "https://via.placeholder.com/280x250?text=Cheese+Cake" },
+            { id: 9, name: "Red Velvet Cake", price: 32000, category: "cake", description: "Elegant red velvet cake", image: "https://via.placeholder.com/280x250?text=Red+Velvet" },
+            
+            // Luxury Items
+            { id: 10, name: "Gold Leaf Pastries", price: 15000, category: "luxury", description: "24k edible gold pastries", image: "https://via.placeholder.com/280x250?text=Gold+Pastries" },
+            { id: 11, name: "Premium Macarons (Box of 12)", price: 12000, category: "luxury", description: "French premium macarons", image: "https://via.placeholder.com/280x250?text=Macarons" },
+            { id: 12, name: "Chocolate Truffles (Box)", price: 8500, category: "luxury", description: "Handmade chocolate truffles", image: "https://via.placeholder.com/280x250?text=Truffles" },
+            { id: 13, name: "Artisan Bread Selection", price: 5500, category: "luxury", description: "Premium artisan breads", image: "https://via.placeholder.com/280x250?text=Artisan+Bread" },
+            { id: 14, name: "Caviar Cupcakes (6 pieces)", price: 18000, category: "luxury", description: "Luxury caviar-topped cupcakes", image: "https://via.placeholder.com/280x250?text=Caviar+Cupcakes" },
+            
+            // Beverages
+            { id: 15, name: "Premium Honey (500ml)", price: 8000, category: "beverage", description: "Pure organic honey", image: "https://via.placeholder.com/280x250?text=Honey" },
+            { id: 16, name: "Artisan Coffee Blend (500g)", price: 12000, category: "beverage", description: "Specialty coffee beans", image: "https://via.placeholder.com/280x250?text=Coffee" },
+            { id: 17, name: "Luxury Hot Chocolate Mix", price: 5500, category: "beverage", description: "Premium chocolate mix", image: "https://via.placeholder.com/280x250?text=Chocolate" },
+            { id: 18, name: "Herbal Tea Collection", price: 7500, category: "beverage", description: "Organic herbal teas", image: "https://via.placeholder.com/280x250?text=Tea" },
+            { id: 19, name: "Fresh Yoghurt (1kg)", price: 4500, category: "beverage", description: "Creamy yoghurt", image: "https://via.placeholder.com/280x250?text=Yoghurt" },
+        ];
+
+        // Games Data
+        const games = [
+            { name: "Piano Fire", image: "https://via.placeholder.com/280x200?text=Piano+Fire", url: "https://www.play.pianofireonline.com" },
+            { name: "Spinjitzu Ninjago", image: "https://via.placeholder.com/280x200?text=Ninjago", url: "https://www.ninjago.com" },
+            { name: "Sword Simulator", image: "https://via.placeholder.com/280x200?text=Sword", url: "https://www.swordgameonline.com" },
+            { name: "Racing Master", image: "https://via.placeholder.com/280x200?text=Racing", url: "https://www.racingmasteronline.com" },
+            { name: "Puzzle Quest", image: "https://via.placeholder.com/280x200?text=Puzzle", url: "https://www.puzzlequest.com" },
+            { name: "Adventure Run", image: "https://via.placeholder.com/280x200?text=Adventure", url: "https://www.adventurerun.com" },
+        ];
+
+        let cart = [];
+        let currentUser = null;
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+            
+            if (pageId === 'products') renderProducts('all');
+            if (pageId === 'games') renderGames();
+            if (pageId === 'cart') renderCart();
+        }
+
+        function renderProducts(category = 'all') {
+            const container = document.getElementById('productsContainer');
+            const filtered = category === 'all' ? products : products.filter(p => p.category === category);
+            
+            container.innerHTML = filtered.map(product => `
+                <div class="hive-card">
+                    <span class="category-tag">${product.category.toUpperCase()}</span>
+                    <span class="price-tag">₦${product.price.toLocaleString()}</span>
+                    <img src="${product.image}" alt="${product.name}">
+                    <h2>${product.name}</h2>
+                    <p class="description">${product.description}</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <button class="cart-btn" onclick="addToCart(${product.id}, '${product.name}', ${product.price})">Add to Cart</button>
+                </div>
+            `).join('');
+            
+            updateFilterButtons(category);
+        }
+
+        function updateFilterButtons(active) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function filterProducts(category) {
+            renderProducts(category);
+        }
+
+        function renderGames() {
+            const container = document.getElementById('gamesContainer');
+            container.innerHTML = games.map((game, i) => `
+                <div class="game-card">
+                    <img src="${game.image}" alt="${game.name}">
+                    <div class="game-info">
+                        <h3>${game.name}</h3>
+                        <button class="game-btn" onclick="window.open('${game.url}', '_blank')">Play Now</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(id, name, price) {
+            if (!currentUser) {
+                alert('Please sign in first to add items to cart!');
+                showPage('signin');
+                return;
+            }
+            cart.push({ id, name, price });
+            document.getElementById('cartCount').textContent = cart.length;
+            alert(`✅ ${name} added to cart!`);
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cartContent');
+            
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <p style="text-align: center; color: #888; padding: 40px;">
+                        Your cart is empty. <a href="#" onclick="showPage('products')" style="color: #ffb400;">Start shopping!</a>
+                    </p>
+                `;
+                return;
+            }
+            
+            let total = 0;
+            let html = `
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            cart.forEach((item, index) => {
+                html += `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>₦${item.price.toLocaleString()}</td>
+                        <td><button class="remove-btn" onclick="removeFromCart(${index})">Remove</button></td>
+                    </tr>
+                `;
+                total += item.price;
+            });
+            
+            html += `
+                    </tbody>
+                </table>
+                <div class="cart-summary">
+                    <h3>Order Summary</h3>
+                    <p style="margin: 10px 0;"><strong>Subtotal:</strong> ₦${total.toLocaleString()}</p>
+                    <p style="margin: 10px 0;"><strong>Delivery Fee:</strong> ₦2,000</p>
+                    <p style="font-size: 18px; color: #ffb400; margin-top: 15px;"><strong>Total: ₦${(total + 2000).toLocaleString()}</strong></p>
+                    <button class="checkout-btn" onclick="handleCheckout()">Proceed to Checkout</button>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            document.getElementById('cartCount').textContent = cart.length;
+            renderCart();
+        }
+
+        function handleSignIn(e) {
+            e.preventDefault();
+            currentUser = {
+                name: document.getElementById('signin_name').value,
+                email: document.getElementById('signin_email').value,
+                phone: document.getElementById('signin_phone').value,
+                address: document.getElementById('signin_address').value
+            };
+            alert(`✅ Welcome ${currentUser.name}! You can now shop.`);
+            showPage('products');
+            e.target.reset();
+        }
+
+        function handleCheckout() {
+            if (!currentUser) {
+                alert('Please sign in first!');
+                return;
+            }
+            
+            let itemsList = cart.map(item => `• ${item.name} - ₦${item.price.toLocaleString()}`).join('%0A');
+            let total = cart.reduce((sum, item) => sum + item.price, 0);
+            
+            const message = `Hello! I would like to place an order:%0A%0A${itemsList}%0A%0AName: ${currentUser.name}%0APhone: ${currentUser.phone}%0AAddress: ${currentUser.address}%0A%0ATotal: ₦${(total + 2000).toLocaleString()}`;
+            
+            window.open(`https://wa.me/2349067103388?text=${message}`, '_blank');
+            cart = [];
+            document.getElementById('cartCount').textContent = '0';
+            alert('Order sent! We will contact you shortly.');
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            
+            const message = `Name: ${document.getElementById('contact_name').value}%0AEmail: ${document.getElementById('contact_email').value}%0APhone: ${document.getElementById('contact_phone').value}%0A%0AMessage: ${document.getElementById('contact_message').value}`;
+            
+            window.open(`https://wa.me/2349067103388?text=${message}`, '_blank');
+            alert('Message sent on WhatsApp!');
+            e.target.reset();
+        }
+
+        function handleEmployeeApplication(e) {
+            e.preventDefault();
+            
+            const message = `Employment Application:%0A%0AName: ${document.getElementById('emp_name').value}%0AEmail: ${document.getElementById('emp_email').value}%0APhone: ${document.getElementById('emp_phone').value}%0AExperience: ${document.getElementById('emp_experience').value || 'Not specified'}`;
+            
+            window.open(`https://wa.me/2349067103388?text=${message}`, '_blank');
+            alert('Application sent! We will review and contact you soon.');
+            e.target.reset();
+        }
+
+        // Initialize
+        renderProducts('all');
+        renderGames();
+    </script>
+</body>
+</html>
